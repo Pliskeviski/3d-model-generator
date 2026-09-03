@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "two-forks-props": {
+      "command": "node",
+      "args": ["mcp/server.js"]
+    }
+  }
+}

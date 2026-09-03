@@ -1,0 +1,18 @@
+{
+  "generatedBy": "claude-opus-5",
+  "backend": "claude-code",
+  "seconds": 656,
+  "when": "2026-09-02T22:22:06.595Z",
+  "attempts": 1,
+  "turns": 20,
+  "kind": "building",
+  "references": [
+    "refs/hollister-239/fire-station.png",
+    "refs/hollister-239/looking-east.png"
+  ],
+  "links": [],
+  "request": {
+    "name": "Santa Monica Fire Station No. 2",
+    "description": "City of Santa Monica Fire Station No. 2 at 222 Hollister Ave, Ocean Park. The street front is a two-storey red brick block about 26 m wide and 8 m tall with a flat roof, a low parapet and a rooftop railing; three tall glass roll-up apparatus doors with yellow frames and yellow mullions fill the ground floor, with a brick band above carrying the lettering 'City of Santa Monica - Fire Station No. 2' in white (render the lettering band as a light strip, no real text needed); a flagpole and a small bench stand by the left door; a red curb runs along the apron. Behind the front block the lot continues as a lower yard with a rolling gate on the left. Front is +z. Metres."
+  }
+}

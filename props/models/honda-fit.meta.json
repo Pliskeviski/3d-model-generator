@@ -1,0 +1,19 @@
+{
+  "generatedBy": "claude-fable-5-1",
+  "backend": "claude-code",
+  "seconds": 654,
+  "when": "2026-09-02T20:34:15.420Z",
+  "attempts": 1,
+  "turns": 21,
+  "kind": "vehicle",
+  "references": [
+    "refs/honda-fit-wikipedia.jpg"
+  ],
+  "links": [
+    "https://en.wikipedia.org/wiki/Honda_Fit"
+  ],
+  "request": {
+    "name": "Honda Fit",
+    "description": "Third-generation Honda Fit (2015-2020) five-door hatchback in dark blue, the family car of a Santa Monica household; stock, no accessories"
+  }
+}

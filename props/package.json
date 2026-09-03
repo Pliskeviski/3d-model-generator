@@ -1,0 +1,23 @@
+{
+  "name": "two-forks-props",
+  "version": "0.1.0",
+  "description": "Low-poly 3D props in a Firewatch-dusk style: a fixed style runtime plus per-model build scripts, with validation, GLB/OBJ export, a gallery, a CLI and an MCP server.",
+  "license": "MIT",
+  "private": true,
+  "bin": { "prop": "bin/prop.js" },
+  "scripts": {
+    "test": "node tools/validate.js",
+    "validate": "node tools/validate.js",
+    "export": "node tools/validate.js --export",
+    "gallery": "node tools/build-gallery.js",
+    "still": "node tools/still.js",
+    "mcp": "node mcp/server.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.60.0",
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "three": "0.128.0",
+    "zod": "^3.23.8"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "generatedBy": "claude-fable-5-1",
+  "backend": "claude-code",
+  "seconds": 2340,
+  "when": "2026-09-02T20:00:29.633Z",
+  "attempts": 1,
+  "turns": 13,
+  "kind": "vehicle",
+  "references": [
+    "refs/fiat-mobi-fable-wikidata.jpg"
+  ],
+  "links": [
+    "https://www.wikidata.org/wiki/Q23837806"
+  ],
+  "request": {
+    "name": "Fiat Mobi (Fable 5.1)",
+    "description": ""
+  }
+}

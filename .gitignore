@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+props/dist/
+props/gallery/index.html
+props/refs/
+environments/dist/
+environments/envs/_maps/

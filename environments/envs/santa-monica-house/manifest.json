@@ -1,0 +1,18 @@
+{
+  "id": "santa-monica-house",
+  "type": "home",
+  "ok": true,
+  "models": [
+    "santa-monica-home",
+    "santa-monica-garage"
+  ],
+  "docs": [
+    "environments/envs/santa-monica-house/scenario.md"
+  ],
+  "subject": "The Okafor-Vance home at 2401, upper floor and garage level",
+  "notes": "Hand-composed reference environment from the review session; see scenario.md sections 5 and 6 for the judgement and the tool requirements it produced.",
+  "session": {
+    "model": "claude-fable-5-1",
+    "note": "interactive session, not the pipeline"
+  }
+}

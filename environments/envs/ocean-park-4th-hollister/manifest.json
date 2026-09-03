@@ -1,0 +1,49 @@
+{
+  "id": "ocean-park-4th-hollister",
+  "type": "street",
+  "prompt": "build a street at 4th Street & Hollister Avenue, Santa Monica, California",
+  "ok": true,
+  "session": {
+    "model": "claude-opus-5",
+    "turns": 59,
+    "summary": "DONE ocean-park-4th-hollister ocean-park-4th-hollister-street I built one scene model, `props/models/ocean-park-4th-hollister-street.js` (19,404 tris of a 40,000 budget, scale 0.164 so the 220 m disc is 36 world units across), from the 53 OSM footprints and 17 ways in `map.json`: ground, three residential streets and two alleys with sidewalk bands, palms and lamps from `C.mapScene`, then two lots given detailed models instead of extrusions — `house` on OSM 440296171 mid-block (a 16.6 × 8.7 m lot that fits its 19.5 m footprint-with-driveway) and `apartments` on OSM 439420816 across the street (27.7 × 10.6 m, scaled to 26 m) — and about twenty catalog placements dressing the block for a Tuesday dusk: eight parked cars facing the way they drove in, two sets of bins at the kerb, a commuter bi…"
+  },
+  "models": [
+    {
+      "id": "ocean-park-4th-hollister-street",
+      "ok": true,
+      "tris": 19404,
+      "kind": "scene",
+      "errors": [],
+      "warnings": [],
+      "exports": [
+        "props/dist/ocean-park-4th-hollister-street.glb",
+        "props/dist/ocean-park-4th-hollister-street.obj"
+      ],
+      "still": "props/dist/ocean-park-4th-hollister-street.png"
+    }
+  ],
+  "docs": [
+    "environments/envs/ocean-park-4th-hollister/scenario.md"
+  ],
+  "subject": "A 220 m disc of Ocean Park, Santa Monica at dusk: Hollister Avenue between 5th and 6th Street, 53 OSM footprints, three residential streets and two alleys, with the house and apartments models standing in for two real lots and the block parked out for a Tuesday night",
+  "notes": "One scene model, 19,404 triangles of a 40,000 budget, built on C.mapScene from the map.json footprints with the ways clipped to a 118 m disc and the map inlined in the model file, since the gallery page cannot read JSON. Two lots carry detailed models instead of extrusions: OSM 440296171 takes `house` (16.6 x 8.7 m lot, 19.5 m model with its driveway) and OSM 439420816 takes `apartments` (27.7 x 10.6 m lot, scaled to 26 m). Both needed workarounds worth knowing about: C.prop measures an embedded model from its world bounding box, so a prop placed at the street's 38.8-degree bearing comes out 15% small unless it is dropped into an unrotated holder that is turned afterwards; and api.eave, api.railing and api.facade were bound before C.prop swapped in its own part(), so their meshes land loose on the scene root at 1:1 metres and have to be adopted back into the prop. What reads: the grid, the sidewalk bands, the palm line, the parked cars for scale, and the two embedded buildings, which are the only things in the frame with windows. What does not: the other fifty-one buildings are flat-topped prisms in one narrow tonal range, so a bungalow street reads as one mass -- mapScene has no roof shapes and that is the single biggest missing helper; the sidewalk material outshines every building; the small dressing (bins, bike, surfboard, skateboard, hedge) is below the resolution of the home camera; there are no figures, so nothing person-sized but the cars; and the south side of the block is bare because OSM has one structure traced there. One honest caveat: the geocoder resolved Hollister Avenue to the midpoint of its own way, which is between 5th and 6th, so 4th Street lies 136 m west, one block beyond the edge of the disc. The camera looks west down Hollister toward it.",
+  "gallery": "props/dist/gallery.html",
+  "elapsed": 1597,
+  "research": {
+    "notes": [],
+    "images": [],
+    "map": "environments/envs/ocean-park-4th-hollister/map.json"
+  },
+  "request": {
+    "id": "ocean-park-4th-hollister",
+    "prompt": "build a street at 4th Street & Hollister Avenue, Santa Monica, California",
+    "type": "street",
+    "links": [],
+    "place": "4th Street & Hollister Avenue, Santa Monica, California",
+    "radius": 110,
+    "model": "claude-opus-5",
+    "when": "2026-09-02T20:53:50.968Z"
+  },
+  "log": "environments/dist/ocean-park-4th-hollister.build.log"
+}

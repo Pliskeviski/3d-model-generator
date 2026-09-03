@@ -1,0 +1,10 @@
+{
+  "id": "retired-couple-home",
+  "prompt": "build a Santa Monica home interior for the existing house model (id house, the two-storey stucco house over four garage doors at 2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker",
+  "type": "home",
+  "links": [],
+  "place": "2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker",
+  "radius": 120,
+  "model": "claude-opus-5",
+  "when": "2026-09-02T20:53:25.517Z"
+}

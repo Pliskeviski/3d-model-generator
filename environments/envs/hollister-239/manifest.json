@@ -1,0 +1,18 @@
+{
+  "id": "hollister-239",
+  "type": "street",
+  "ok": true,
+  "models": [
+    "hollister-239-street",
+    "fire-station-2"
+  ],
+  "docs": [
+    "environments/envs/hollister-239/street.md"
+  ],
+  "subject": "The 200 block of Hollister Avenue, Ocean Park, at 239: real footprints, roads and USGS grade, dressed from a street sheet written off four Street View captures",
+  "notes": "Hand-composed in the review session with the new street layer; the fire station is a generated prop (Opus 5, 11 min) embedded at real size. See street.md and the props README for the layer.",
+  "session": {
+    "model": "claude-fable-5-1",
+    "note": "interactive session; fire-station-2 by claude-opus-5 through the prop tool"
+  }
+}

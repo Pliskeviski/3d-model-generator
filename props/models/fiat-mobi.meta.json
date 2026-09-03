@@ -1,0 +1,13 @@
+{
+  "generatedBy": "claude-sonnet-5",
+  "backend": "claude-code",
+  "seconds": 701,
+  "when": "2026-09-02T15:34:00.000Z",
+  "attempts": 1,
+  "turns": 19,
+  "kind": "vehicle",
+  "references": ["refs/fiat-mobi-wikidata.jpg"],
+  "links": ["https://www.wikidata.org/wiki/Q23837806"],
+  "request": { "name": "Fiat Mobi", "description": "" },
+  "note": "Model name and timing copied from the build log; this run started before the sidecar was written automatically."
+}

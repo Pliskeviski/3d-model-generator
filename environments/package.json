@@ -1,0 +1,10 @@
+{
+  "name": "two-forks-environments",
+  "version": "0.1.0",
+  "description": "Compose lived-in environments (homes, streets, later parks and cities) in the Two Forks style from one prompt, with links and map locations as research. Drives the props package next to it.",
+  "license": "MIT",
+  "private": true,
+  "bin": { "env": "bin/env.js" },
+  "scripts": { "map": "node bin/env.js map", "mcp": "node mcp/server.js" },
+  "engines": { "node": ">=18" }
+}

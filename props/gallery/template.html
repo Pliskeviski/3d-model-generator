@@ -1,0 +1,277 @@
+<title>Two Forks Props</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  :root{
+    --ink:#1B1220; --cream:#F1E3C4; --cream-70:rgba(241,227,196,.72); --cream-45:rgba(241,227,196,.48);
+    --rule:rgba(241,227,196,.16); --ember:#E8703A; --gold:#F6C46A; --plum:#2B1533; --crimson:#8C3B49;
+    --display:'Bebas Neue','Oswald',Impact,'Arial Narrow',sans-serif;
+    --body:'Source Sans 3','Source Sans Pro','Helvetica Neue',Arial,sans-serif;
+  }
+  html{color-scheme:dark;background:var(--ink)}
+  body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .page{max-width:1240px;margin:0 auto;padding:24px 24px 56px}
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:16px}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:4px}
+  .lede{max-width:70ch;color:var(--cream-70);margin:0}
+  .count{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-45);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start}
+  .side{position:sticky;top:16px;display:flex;flex-direction:column;gap:10px;max-height:calc(100vh - 32px)}
+  .filter{font:inherit;color:var(--cream);background:rgba(241,227,196,.05);border:1px solid var(--rule);border-radius:3px;padding:8px 12px;width:100%;box-sizing:border-box}
+  .filter::placeholder{color:var(--cream-45)}
+  .filter:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+  .list{overflow:auto;border:1px solid var(--rule);border-radius:3px;background:rgba(241,227,196,.03);flex:1;min-height:0;padding-bottom:6px}
+  .kind{position:sticky;top:0;background:#211627;padding:10px 12px 4px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-45);z-index:1}
+  .item{display:flex;justify-content:space-between;align-items:baseline;gap:8px;width:100%;text-align:left;border:0;border-left:3px solid transparent;border-radius:0;padding:7px 12px 7px 10px;font-size:14px;color:var(--cream-70);background:transparent;cursor:pointer;font:inherit}
+  .item:hover{background:rgba(241,227,196,.06);color:var(--cream)}
+  .item:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+  .item[aria-current="true"]{border-left-color:var(--ember);background:rgba(241,227,196,.08);color:var(--cream)}
+  .item small{color:var(--cream-45);font-variant-numeric:tabular-nums;font-size:12px;white-space:nowrap}
+  .item[hidden]{display:none}
+  .empty{padding:14px 12px;color:var(--cream-45);font-size:13px}
+  .poster{background:var(--cream);padding:10px 10px 0;border-radius:3px;box-shadow:0 30px 60px -30px rgba(0,0,0,.85)}
+  .view{position:relative;height:clamp(300px,50vh,520px);background:#2B1533;overflow:hidden;touch-action:none;cursor:grab;outline:none}
+  .view:active{cursor:grabbing}
+  .view:focus-visible{box-shadow:inset 0 0 0 3px var(--gold)}
+  .view canvas{display:block;width:100%;height:100%}
+  .hint{position:absolute;left:12px;bottom:12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(241,227,196,.9);background:rgba(27,18,32,.55);padding:6px 10px;border-radius:2px;pointer-events:none;transition:opacity .6s}
+  .hint.gone{opacity:0}
+  .zoom{position:absolute;right:12px;top:12px;display:flex;flex-direction:column;gap:6px}
+  .zoom button{width:34px;height:34px;padding:0;justify-content:center;background:rgba(27,18,32,.6);border-color:rgba(241,227,196,.28);font-size:19px;line-height:1;color:var(--cream)}
+  .zoom button:hover{background:rgba(27,18,32,.85);border-color:var(--cream)}
+  .band{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:12px 6px 10px;color:var(--plum)}
+  .title{font-family:var(--display);font-size:clamp(32px,4.6vw,54px);line-height:.92;letter-spacing:.01em;margin:0;font-weight:400;text-wrap:balance}
+  .band-meta{text-align:right;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson);font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.5}
+  .band-meta b{display:block;color:var(--plum);font-size:13px}
+  .band-meta small{display:block;font-size:11px;letter-spacing:.1em;color:rgba(43,21,51,.7)}
+  .toolbar{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;padding:16px 2px;border-bottom:1px solid var(--rule)}
+  .group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-45);margin-right:4px}
+  button{font:inherit;color:var(--cream);background:transparent;border:1px solid var(--rule);border-radius:2px;padding:6px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;line-height:1.2}
+  button:hover{border-color:var(--cream-45)}
+  button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  button[aria-pressed="true"]{border-color:var(--cream);background:rgba(241,227,196,.08)}
+  .sw{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--rule)}
+  button[aria-pressed="true"] .dot{background:var(--ember)}
+  .notes{padding-top:18px}
+  h2{font-family:var(--display);font-size:22px;letter-spacing:.03em;margin:0 0 6px;color:var(--cream);font-weight:400}
+  ul{margin:0;padding-left:18px;color:var(--cream-70)}
+  li{margin:4px 0}
+  li b{color:var(--cream);font-weight:600}
+  .palette{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px}
+  .chip{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--cream-70)}
+  .chip i{width:18px;height:18px;border-radius:2px;flex:none;box-shadow:inset 0 0 0 1px rgba(241,227,196,.12)}
+  .chip code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--cream-45)}
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr}
+    .side{position:static;max-height:none}
+    .list{max-height:200px}
+    .band{flex-direction:column;align-items:flex-start}
+    .band-meta{text-align:left}
+  }
+  @media (prefers-reduced-motion:reduce){ .hint{transition:none} }
+  body.still .top,body.still .side,body.still .band,body.still .toolbar,body.still .notes,body.still .hint,body.still .zoom{display:none}
+  body.still .page{max-width:none;padding:0}
+  body.still .layout{display:block}
+  body.still .poster{padding:0;border-radius:0;box-shadow:none}
+  body.still .view{height:100vh;width:100vw}
+</style>
+
+<div class="page">
+  <div class="top">
+    <div>
+      <div class="eyebrow">Model review &middot; Low poly</div>
+      <p class="lede">Low-poly props built from beveled silhouettes and simple primitives, lit like a Firewatch dusk. Pick a model on the left, drag to turn it, swap the colorway, flip to wireframe to check the mesh.</p>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <div class="layout">
+    <aside class="side">
+      <input class="filter" id="filter" type="search" placeholder="Filter models" aria-label="Filter models" autocomplete="off">
+      <nav class="list" id="list" aria-label="Models"></nav>
+    </aside>
+
+    <main>
+      <div class="poster">
+        <div class="view" id="view" tabindex="0" aria-label="3D model viewport. Drag to turn, scroll or use the buttons to zoom, arrow keys to rotate.">
+          <div class="hint" id="hint">Drag to turn &middot; Scroll to zoom &middot; Shift-drag or right-drag to move</div>
+          <div class="zoom">
+            <button id="zin" aria-label="Zoom in" title="Zoom in">+</button>
+            <button id="zout" aria-label="Zoom out" title="Zoom out">&minus;</button>
+            <button id="zreset" aria-label="Reset view" title="Reset view">&#8634;</button>
+          </div>
+        </div>
+        <div class="band">
+          <h1 class="title" id="title">Two Forks Props</h1>
+          <div class="band-meta"><b id="meta-color">&nbsp;</b><span id="meta-tris"></span><small id="meta-built"></small></div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="group" id="cw-group"><span class="label">Colorway</span></div>
+        <div class="group"><span class="label">View</span>
+          <button id="wire" aria-pressed="false"><i class="dot"></i>Wireframe</button>
+          <button id="auto" aria-pressed="true"><i class="dot"></i>Auto-turn</button>
+          <button id="windBtn" aria-pressed="true"><i class="dot"></i>Wind</button>
+        </div>
+        <div class="group"><span class="label">Sky</span>
+          <button class="sky" data-sky="dusk" aria-pressed="true">Dusk</button>
+          <button class="sky" data-sky="gloom" aria-pressed="false">June gloom</button>
+        </div>
+      </div>
+
+      <section class="notes">
+        <h2>How this one is built</h2>
+        <p id="notes" class="lede">&nbsp;</p>
+      </section>
+      <section class="notes">
+        <h2>Shared style</h2>
+        <ul>
+          <li><b>Flat normals</b> on every mesh, five to twelve segments per curve, real-world units.</li>
+          <li><b>Lighting</b> is a warm key from the front, a gold rim from the sun behind, and a plum fill from below.</li>
+          <li><b>Backdrop</b> is a gradient sky shader, a sun disc, and four rings of faceted ridges with pines, faded into the haze by distance fog.</li>
+        </ul>
+        <div class="palette">
+          <div class="chip"><i style="background:#2B1533"></i>Dusk plum <code>#2B1533</code></div>
+          <div class="chip"><i style="background:#B03D4D"></i>Crimson haze <code>#B03D4D</code></div>
+          <div class="chip"><i style="background:#E8703A"></i>Ember <code>#E8703A</code></div>
+          <div class="chip"><i style="background:#F6C46A"></i>Sun gold <code>#F6C46A</code></div>
+          <div class="chip"><i style="background:#17101E"></i>Ridge ink <code>#17101E</code></div>
+          <div class="chip"><i style="background:#F1E3C4"></i>Lookout cream <code>#F1E3C4</code></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!--THREE-->
+<!--SCRIPTS-->
+<script>
+(function(){
+  var hint=document.getElementById('hint'), view=document.getElementById('view');
+  if(!window.THREE||!window.TwoForks){ hint.textContent='3D runtime did not load'; return; }
+  var params=new URLSearchParams(location.search);
+  var still=params.get('still')==='1';
+  if(still) document.body.classList.add('still');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var META=window.PROP_META||{};
+
+  var world=TwoForks.createWorld(THREE);
+  (window.PROPS||[]).forEach(function(def){ try{ world.addModel(def); }catch(e){ console.error('model '+(def&&def.id)+' failed to build', e); } });
+  if(!world.order.length){ hint.textContent='No models loaded'; return; }
+
+  var renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:still});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  view.insertBefore(renderer.domElement, hint);
+
+  var titleEl=document.getElementById('title'), metaColor=document.getElementById('meta-color'), metaTris=document.getElementById('meta-tris'), metaBuilt=document.getElementById('meta-built'), notesEl=document.getElementById('notes');
+  var list=document.getElementById('list'), filter=document.getElementById('filter'), countEl=document.getElementById('count'), cwGroup=document.getElementById('cw-group');
+  var wireBtn=document.getElementById('wire'), autoBtn=document.getElementById('auto');
+  var auto=!reduce&&!still, dragging=false;
+
+  function fmtTime(sec){ if(!sec&&sec!==0) return ''; sec=Math.round(sec); var m=Math.floor(sec/60), s=sec%60; return m? m+'m'+(s<10?'0':'')+s+'s' : s+'s'; }
+  function builtLine(id){
+    var g=META[id]; if(!g) return '';
+    if(g.seconds) return 'Built with '+g.generatedBy+' in '+fmtTime(g.seconds);
+    return g.generatedBy ? 'Built with '+g.generatedBy : '';
+  }
+  function setAuto(on){ auto=on; autoBtn.setAttribute('aria-pressed',on?'true':'false'); }
+  function hideHint(){ hint.classList.add('gone'); }
+  function fit(){ var w=view.clientWidth, h=view.clientHeight; if(!w||!h) return; world.fit(w,h); renderer.setSize(w,h,false); }
+  function setColorway(id){
+    var c=world.setColorway(id); if(!c) return; metaColor.textContent=c.name;
+    Array.prototype.forEach.call(cwGroup.querySelectorAll('.cw'),function(b){ b.setAttribute('aria-pressed', b.dataset.cw===id?'true':'false'); });
+  }
+  function renderColorways(){
+    Array.prototype.forEach.call(cwGroup.querySelectorAll('.cw'),function(b){ b.remove(); });
+    world.active().colorways.forEach(function(c){
+      var b=document.createElement('button'); b.className='cw'; b.dataset.cw=c.id; b.setAttribute('aria-pressed','false');
+      var i=document.createElement('i'); i.className='sw'; i.style.background=c.sw; b.appendChild(i); b.appendChild(document.createTextNode(c.name));
+      b.addEventListener('click',function(){ setColorway(c.id); }); cwGroup.appendChild(b);
+    });
+  }
+  function setModel(id, fromUser){
+    var m=world.setActive(id);
+    titleEl.textContent=m.name; metaTris.textContent=m.tris.toLocaleString('en-US')+' tris · '+m.kind; metaBuilt.textContent=builtLine(id); notesEl.textContent=m.def.notes||'';
+    Array.prototype.forEach.call(list.querySelectorAll('.item'),function(b){ b.setAttribute('aria-current', b.dataset.id===id?'true':'false'); });
+    renderColorways(); setColorway(m.cw); fit(); setAuto(!reduce&&!still);
+    if(fromUser&&history.replaceState) history.replaceState(null,'','#'+id);
+  }
+
+  // ---- model list: grouped by kind, filterable, keyboard-navigable
+  var KINDS={prop:'Props',vehicle:'Vehicles',building:'Buildings',scene:'Scenes'};
+  var groups={}; world.order.forEach(function(id){ var m=world.models[id]; (groups[m.kind]=groups[m.kind]||[]).push(m); });
+  Object.keys(KINDS).concat(Object.keys(groups).filter(function(k){ return !KINDS[k]; })).forEach(function(k){
+    var ms=groups[k]; if(!ms) return; ms.sort(function(a,b){ return a.name.localeCompare(b.name); });
+    var h=document.createElement('div'); h.className='kind'; h.textContent=KINDS[k]||k; h.dataset.kind=k; list.appendChild(h);
+    ms.forEach(function(m){
+      var b=document.createElement('button'); b.className='item'; b.dataset.id=m.id; b.dataset.kind=k; b.setAttribute('aria-current','false');
+      var n=document.createElement('span'); n.textContent=m.name; var t=document.createElement('small'); t.textContent=m.tris.toLocaleString('en-US');
+      b.appendChild(n); b.appendChild(t); b.addEventListener('click',function(){ setModel(m.id,true); }); list.appendChild(b);
+    });
+  });
+  var empty=document.createElement('div'); empty.className='empty'; empty.textContent='No models match'; empty.hidden=true; list.appendChild(empty);
+  function applyFilter(){
+    var q=filter.value.trim().toLowerCase(), shown=0, perKind={};
+    Array.prototype.forEach.call(list.querySelectorAll('.item'),function(b){ var hit=!q||b.textContent.toLowerCase().indexOf(q)>=0; b.hidden=!hit; if(hit){ shown++; perKind[b.dataset.kind]=true; } });
+    Array.prototype.forEach.call(list.querySelectorAll('.kind'),function(h){ h.hidden=!perKind[h.dataset.kind]; });
+    empty.hidden=shown>0;
+    countEl.textContent=(q? shown+' of ':'')+world.order.length+' model'+(world.order.length===1?'':'s');
+  }
+  filter.addEventListener('input',applyFilter); applyFilter();
+  function visibleItems(){ return Array.prototype.filter.call(list.querySelectorAll('.item'),function(b){ return !b.hidden; }); }
+  function step(d){ var items=visibleItems(); if(!items.length) return; var cur=world.active().id, i=items.findIndex(function(b){ return b.dataset.id===cur; }); var n=items[Math.max(0,Math.min(items.length-1,(i<0?0:i)+d))]; if(n){ setModel(n.dataset.id,true); n.focus(); n.scrollIntoView({block:'nearest'}); } }
+  list.addEventListener('keydown',function(e){ if(e.key==='ArrowDown'){ e.preventDefault(); step(1); } else if(e.key==='ArrowUp'){ e.preventDefault(); step(-1); } });
+  filter.addEventListener('keydown',function(e){ if(e.key==='ArrowDown'){ e.preventDefault(); var f=visibleItems()[0]; if(f){ setModel(f.dataset.id,true); f.focus(); } } });
+
+  // ---- view controls
+  wireBtn.addEventListener('click',function(){ wireBtn.setAttribute('aria-pressed', world.setWire(!world.isWire())?'true':'false'); });
+  autoBtn.addEventListener('click',function(){ setAuto(!auto); });
+  var windBtn=document.getElementById('windBtn'); if(reduce||still) world.wind.on=false; windBtn.setAttribute('aria-pressed',world.wind.on?'true':'false');
+  windBtn.addEventListener('click',function(){ world.wind.on=!world.wind.on; windBtn.setAttribute('aria-pressed',world.wind.on?'true':'false'); });
+  var skyBtns=Array.prototype.slice.call(document.querySelectorAll('.sky'));
+  function setSky(w){ world.setWeather(w); skyBtns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.sky===w?'true':'false'); }); }
+  skyBtns.forEach(function(b){ b.addEventListener('click',function(){ setSky(b.dataset.sky); }); });
+  if(params.get('sky')) setSky(params.get('sky'));
+  document.getElementById('zin').addEventListener('click',function(){ world.zoomBy(0.85); hideHint(); });
+  document.getElementById('zout').addEventListener('click',function(){ world.zoomBy(1/0.85); hideHint(); });
+  document.getElementById('zreset').addEventListener('click',function(){ world.resetView(); setAuto(!reduce); });
+  var lx=0, ly=0;
+  var panning=false;
+  view.addEventListener('contextmenu',function(e){ e.preventDefault(); });
+  view.addEventListener('pointerdown',function(e){ if(e.target.closest&&e.target.closest('.zoom')) return; dragging=true; panning=(e.button===2||e.shiftKey); lx=e.clientX; ly=e.clientY; view.setPointerCapture(e.pointerId); setAuto(false); hideHint(); });
+  view.addEventListener('pointermove',function(e){ if(!dragging) return; var dx=e.clientX-lx, dy=e.clientY-ly; lx=e.clientX; ly=e.clientY; if(panning){ world.panBy(-dx, dy); } else { world.turn(dx*0.008); world.tiltBy(dy*0.006); } });
+  function up(){ dragging=false; }
+  view.addEventListener('pointerup',up); view.addEventListener('pointercancel',up);
+  view.addEventListener('wheel',function(e){ e.preventDefault(); world.zoomBy(Math.exp(e.deltaY*0.0012)); hideHint(); },{passive:false});
+  view.addEventListener('keydown',function(e){
+    var k=e.key, used=true;
+    if(k==='ArrowLeft') world.turn(-0.1); else if(k==='ArrowRight') world.turn(0.1);
+    else if(k==='ArrowUp') world.tiltBy(0.05); else if(k==='ArrowDown') world.tiltBy(-0.05);
+    else if(k==='+'||k==='=') world.zoomBy(0.85); else if(k==='-') world.zoomBy(1/0.85);
+    else if(k==='w'||k==='W') world.panBy(0,40); else if(k==='s'||k==='S') world.panBy(0,-40); else if(k==='a'||k==='A') world.panBy(40,0); else if(k==='d'||k==='D') world.panBy(-40,0);
+    else used=false;
+    if(used){ e.preventDefault(); setAuto(false); hideHint(); }
+  });
+  if(window.ResizeObserver) new ResizeObserver(fit).observe(view); else window.addEventListener('resize',fit);
+
+  var initial=params.get('model')||location.hash.replace('#','');
+  if(!world.models[initial]) initial=world.order[0];
+  setModel(initial,false);
+  var cur=list.querySelector('.item[aria-current="true"]'); if(cur) cur.scrollIntoView({block:'nearest'});
+
+  var last=performance.now();
+  function frame(now){
+    var dt=Math.min(0.05,(now-last)/1000); last=now;
+    if(auto&&!dragging) world.turn(0.18*dt);
+    world.tick(dt);
+    world.placeCamera(); renderer.render(world.scene,world.camera);
+    window.__stillReady=true;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>

@@ -1,0 +1,64 @@
+{
+  "id": "retired-couple-home",
+  "type": "home",
+  "prompt": "build a Santa Monica home interior for the existing house model (id house, the two-storey stucco house over four garage doors at 2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker",
+  "ok": true,
+  "session": {
+    "model": "claude-opus-5",
+    "turns": 24,
+    "summary": "DONE retired-couple-home retired-couple-home-home retired-couple-home-workshop I wrote the household sheet first — Walter (76, retired machinist, ham radio, bad knee) and Marisol (71, retired librarian, quilter), their dog, their daughter's kids one weekend a month, and their tenant Inês Barbosa, a furniture maker who rents all four bays for $1,500 a month and pays part of it in a bench and a side table — then let that sheet decide the plan and every object. The upper floor (10,752 tris) is replanned for two people on the same 12.1 × 8.5 m footprint and the same real window positions as the exterior model: kitchen closed off by a peninsula where they actually eat, so the dining table carries a puzzle instead of dinner; a living room with both chairs aimed at the television and a wall of l…"
+  },
+  "models": [
+    {
+      "id": "retired-couple-home-home",
+      "ok": true,
+      "tris": 10752,
+      "kind": "scene",
+      "errors": [],
+      "warnings": [],
+      "exports": [
+        "props/dist/retired-couple-home-home.glb",
+        "props/dist/retired-couple-home-home.obj"
+      ],
+      "still": "props/dist/retired-couple-home-home.png"
+    },
+    {
+      "id": "retired-couple-home-workshop",
+      "ok": true,
+      "tris": 4848,
+      "kind": "scene",
+      "errors": [],
+      "warnings": [],
+      "exports": [
+        "props/dist/retired-couple-home-workshop.glb",
+        "props/dist/retired-couple-home-workshop.obj"
+      ],
+      "still": "props/dist/retired-couple-home-workshop.png"
+    }
+  ],
+  "docs": [
+    "environments/envs/retired-couple-home/scenario.md"
+  ],
+  "subject": "2401 as a second household: a retired couple's home on the upper floor, and the garage level rented to a furniture maker as her workshop",
+  "notes": "Two scenes on the same 12.1 x 8.5 m footprint as the reference environment, fitted to the same front windows (x -5.2, -1.4, +2.15, +5.3) and the same side-stair front door, but replanned for two people: a kitchen peninsula they actually eat at, a quilting room, a level-entry bath with grab bars, and a guest room doubling as a ham shack. Everything the catalog lacks is composed inline from boxes and cylinders; no prop was generated and nothing is embedded, so both models are self-contained. What reads: the shop is unmistakably a furniture shop from the clamp wall, the glue-up on sawhorses and the bench in the open, and the taped yellow walkway from the fourth door to the landlord's washer explains the whole landlord-tenant arrangement in one object; upstairs the puzzle left on the dining table, the two stools at the peninsula, the quilt on its frame and the shower with no tub read the household without labels. What does not: the new sill markers only hint at the front windows and the back rooms have none at all, because the exterior model carries windows on the street face only; thin things (the cane, the shower riser, clamp bars, hand tools) are lines from this height; the dust curtain reads as two bundles on a rail rather than as cloth; and with the walls cut at 0.8 m neither still shows sky.",
+  "gallery": "props/dist/gallery.html",
+  "elapsed": 1327,
+  "research": {
+    "notes": [
+      "Map lookup failed for \"2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker\": no result for \"2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker\""
+    ],
+    "images": [],
+    "map": null
+  },
+  "request": {
+    "id": "retired-couple-home",
+    "prompt": "build a Santa Monica home interior for the existing house model (id house, the two-storey stucco house over four garage doors at 2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker",
+    "type": "home",
+    "links": [],
+    "place": "2401): a different household from the reference, a retired couple who rent the garage level as a workshop to a furniture maker",
+    "radius": 120,
+    "model": "claude-opus-5",
+    "when": "2026-09-02T20:53:25.517Z"
+  },
+  "log": "environments/dist/retired-couple-home.build.log"
+}
