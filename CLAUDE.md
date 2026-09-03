@@ -15,6 +15,17 @@ Two packages, one repo. Read `docs/HANDOFF.md` first for the state of the work a
 - Review surface: the gallery artifact at https://claude.ai/code/artifact/4d0d68f4-d71c-4266-ad60-76669961e660 is published from `props/dist/artifact.html`. From a new session, publish with that URL as `url` to update it rather than creating a new one.
 - Work is staged and committed to `main`; commit only when asked.
 
+## How the owner likes to work
+
+- Pick the Claude by complexity: Sonnet for small simple props, Opus for complex objects and buildings, Fable for the hardest (cars). That is the default policy; name a model only when asked.
+- Judge every result from a still and say plainly what does not read. The owner values an honest "what is still missing" list over polish claims.
+- When the owner shares photos (Street View captures, product shots), write the sheet first: a household sheet for a home, a street sheet with a lot table for a street. Then place from it. Close the specific gaps the photos show rather than generic improvements.
+- Keep the gallery artifact link stable; update it rather than creating new ones. Publish after each meaningful change so the owner can turn the model.
+- Long generations run in the background with progress; report timings and provenance (which model built what, how long).
+- The bigger goal: a larger LLM process will drive these tools to generate cities. Favour tool-shaped work (helpers in the catalog, pipeline steps, manifests) over one-off scene edits, and record lessons in `docs/HANDOFF.md`.
+
+More context, including the history of how this started, is in `docs/MEMORY.md`.
+
 ## Quick start
 
 ```
